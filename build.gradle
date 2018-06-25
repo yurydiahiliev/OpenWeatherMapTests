@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group 'OpenWeatherMapTests'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'commons-lang:commons-lang:2.6'
+    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '1.6.1'
+    compile group: 'org.aeonbits.owner', name: 'owner', version: '1.0.9'
+    compile group: 'com.codeborne', name: 'selenide', version: '4.7'
+    compileOnly "org.projectlombok:lombok:1.16.14"
+    compile group: 'com.mitchellbosecke', name: 'pebble', version: '2.4.0'
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.8"
+    compile group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.0-BETA21'
+    compile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.3'
+    testCompile 'org.assertj:assertj-core:3.6.2'
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.9.RELEASE'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.9.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.9.RELEASE'
+
+}
