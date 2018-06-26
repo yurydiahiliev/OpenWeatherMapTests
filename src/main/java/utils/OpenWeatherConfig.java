@@ -7,5 +7,7 @@ public interface OpenWeatherConfig extends Config {
 
     String baseUrl();
 
+    String currentWeatherUrl();
+
     String app_id();
 }

@@ -1,6 +1,7 @@
 package api.restassured;
 
-public class RestAssuredClient {
+import api.BaseApi;
 
+public class RestAssuredClient extends BaseApi<RestAssuredClient> {
 
 }
