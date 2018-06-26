@@ -10,4 +10,10 @@ public interface OpenWeatherConfig extends Config {
     String currentWeatherUrl();
 
     String app_id();
+
+    String baseUiUrl();
+
+    String browser();
+
+    int timeout();
 }

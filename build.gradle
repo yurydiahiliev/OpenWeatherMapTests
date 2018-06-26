@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "io.qameta.allure" version "2.1"
 }
 
 group 'OpenWeatherMapTests'
@@ -21,19 +22,37 @@ dependencies {
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.8"
     compile group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.0-BETA21'
     compile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.3'
-    testCompile 'org.assertj:assertj-core:3.6.2'
-    testCompile group: 'org.testng', name: 'testng', version: '6.10'
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.9.RELEASE'
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.9.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.9.RELEASE'
     compile group: 'org.springframework', name: 'spring-core', version: '4.3.8.RELEASE'
     compile group: 'org.springframework', name: 'spring-context', version: '4.3.8.RELEASE'
     compile group: 'org.springframework', name: 'spring-web', version: '4.3.8.RELEASE'
-    // https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl
     compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
 
-
-
-
+    testCompile 'org.assertj:assertj-core:3.6.2'
+    testCompile group: 'org.testng', name: 'testng', version: '6.10'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.9.RELEASE'
 }
+
+test {
+    systemProperty('httpClient', project.hasProperty('httpClient') ? project.findProperty('httpClient') : 'restassured')
+
+    outputs.upToDateWhen { false }
+    testLogging {
+        showStandardStreams = true
+        events "passed", "skipped", "failed"
+        exceptionFormat = 'full'
+    }
+    systemProperty 'allure.results.directory', 'build/allure-results'
+    ignoreFailures true
+}
+
+allure {
+    autoconfigure = true
+    version = '2.4.1'
+    configuration = 'compile'
+    aspectjVersion = '1.8.13'
+}
+
+tasks.withType(Test)*.finalizedBy 'allureReport'

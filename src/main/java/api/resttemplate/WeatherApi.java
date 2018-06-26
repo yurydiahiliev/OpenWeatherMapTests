@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-
 @Service
 @Configurable
 public class WeatherApi extends BaseRestTemplateClient {
@@ -30,45 +29,39 @@ public class WeatherApi extends BaseRestTemplateClient {
 
         HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
 
-        ResponseEntity<WeatherResponse> response = restTemplate.exchange(
+        return restTemplate.exchange(
                 uriComponentsBuilder.toUriString(),
                 HttpMethod.GET,
                 entity,
                 WeatherResponse.class);
 
-        return response;
-
     }
 
-    public String getWeatherByZipCode(String zipCode) {
+    public ResponseEntity<WeatherResponse> getWeatherByZipCode(String zipCode) {
         UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
                 .queryParam("zip", zipCode);
 
         HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
 
-        ResponseEntity<String> response = restTemplate.exchange(
+        return restTemplate.exchange(
                 uriComponentsBuilder.toUriString(),
                 HttpMethod.GET,
                 entity,
-                String.class);
-
-        return response.getBody();
+                WeatherResponse.class);
     }
 
-    public String getWeatherByCoordinates(double lat, double lon) {
+    public ResponseEntity<WeatherResponse> getWeatherByCoordinates(double lat, double lon) {
         UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
                 .queryParam("lat", lat)
-                .queryParam("lot", lon);
+                .queryParam("lon", lon);
 
         HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
 
-        ResponseEntity<String> response = restTemplate.exchange(
+        return restTemplate.exchange(
                 uriComponentsBuilder.toUriString(),
                 HttpMethod.GET,
                 entity,
-                String.class);
-
-        return response.getBody();
+                WeatherResponse.class);
     }
 
     public ResponseEntity<WeatherResponse> getWeatherByCityName(String cityName) {
@@ -78,12 +71,10 @@ public class WeatherApi extends BaseRestTemplateClient {
         HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
         System.out.println("!!!!" + entity.getHeaders());
 
-        ResponseEntity<WeatherResponse> response = restTemplate.exchange(
+        return restTemplate.exchange(
                 uriComponentsBuilder.toUriString(),
                 HttpMethod.GET,
                 entity,
                 WeatherResponse.class);
-
-        return response;
     }
 }
