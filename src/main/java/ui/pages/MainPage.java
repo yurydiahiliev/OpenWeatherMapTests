@@ -9,14 +9,9 @@ import static com.codeborne.selenide.Selenide.$;
 public class MainPage {
 
     private SelenideElement notificationAlertElement = $("div.panel-body");
-    private SelenideElement signInLink = $("");
 
     public SelenideElement getNotificationAlertElement() {
         return notificationAlertElement;
-    }
-
-    public SignInPage goToSignInPage() {
-        return new SignInPage();
     }
 
 

@@ -5,7 +5,7 @@ import com.codeborne.selenide.Condition;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.testng.annotations.Test;
-import ui.pages.MainPage;
+import ui.pages.SignInPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static ui.core.BasePage.open;
@@ -17,8 +17,7 @@ public class CurrentWeatherTest extends BaseTest {
         ResponseEntity<WeatherResponse> weatherResponse = weatherApi.getWeatherByCityName("London");
         assertThat(weatherResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 
-        open(MainPage.class)
-                .goToSignInPage()
+        open(SignInPage.class)
                 .signInAsUser(user)
                 .getNotificationAlertElement()
                 .shouldHave(Condition.text("Signed in successfully."));
