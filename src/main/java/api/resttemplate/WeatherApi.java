@@ -24,7 +24,7 @@ public class WeatherApi extends BaseRestTemplateClient {
     }
 
 
-    public WeatherResponse getWeatherById(long id) {
+    public  ResponseEntity<WeatherResponse> getWeatherById(long id) {
         UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
                 .queryParam("id", id);
 
@@ -35,7 +35,8 @@ public class WeatherApi extends BaseRestTemplateClient {
                 HttpMethod.GET,
                 entity,
                 WeatherResponse.class);
-        return response.getBody();
+
+        return response;
 
     }
 
@@ -70,7 +71,7 @@ public class WeatherApi extends BaseRestTemplateClient {
         return response.getBody();
     }
 
-    public WeatherResponse getWeatherByCityName(String cityName) {
+    public ResponseEntity<WeatherResponse> getWeatherByCityName(String cityName) {
         UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
                 .queryParam("q", cityName);
 
@@ -83,6 +84,6 @@ public class WeatherApi extends BaseRestTemplateClient {
                 entity,
                 WeatherResponse.class);
 
-        return response.getBody();
+        return response;
     }
 }
