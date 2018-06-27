@@ -20,6 +20,7 @@ public class CustomDriverProvider implements WebDriverProvider {
         browser.setVersion("66.0");
         browser.setCapability("enableVNC", true);
         browser.setCapability("name", "OpenWeatherMap");
+        browser.setCapability("timeZone", "Europe/Kiev");
         browser.setCapability(ChromeOptions.CAPABILITY, options);
         try {
             RemoteWebDriver driver = new RemoteWebDriver(

@@ -9,7 +9,6 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.openqa.selenium.InvalidSelectorException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -23,7 +22,7 @@ import static ui.core.BasePage.at;
 import static ui.core.BasePage.open;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RestAssuredClientUnitTest extends BaseTest {
+public class OpenWeatherUnitTest extends BaseTest {
 
     @BeforeMethod
     public void initMocks(){
@@ -140,7 +139,7 @@ public class RestAssuredClientUnitTest extends BaseTest {
     }
 
     @Test
-    public void testUiPages() {
+    public void testUiSignInProcess() {
         open(SignInPage.class)
                 .signInAsUser(user)
                 .getNotificationAlertElement()
@@ -157,14 +156,18 @@ public class RestAssuredClientUnitTest extends BaseTest {
     }
 
     @Test(dataProvider = "pageClasses")
-    public void testSuccessUiEntities(Class tClass) {
+    public void testSuccessGettingPageAnnotation(Class tClass) {
         assertThat(tClass).hasAnnotation(PageUrl.class);
     }
 
-    @Test(expectedExceptions = InvalidSelectorException.class)
-    public void testNullArgumentsInNavigationFooter() {
+    @Test
+    public void testSearchResultsPage() {
+        open(MainPage.class);
         at(NavigationFooter.class)
-                .openTab(null, null);
+                .openTab(WeatherPage.class, "Weather")
+                .searchCity("London")
+                .clickFirstLink()
+                .getActualWeatherResponse();
     }
 
     @Test
@@ -176,5 +179,4 @@ public class RestAssuredClientUnitTest extends BaseTest {
         assertThat(openWeatherConfig.currentWeatherUrl()).isNotEmpty();
         assertThat(openWeatherConfig.timeout()).isNotNull();
     }
-
 }

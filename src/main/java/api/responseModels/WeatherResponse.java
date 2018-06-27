@@ -25,7 +25,6 @@ import java.util.Map;
         "cod"
 })
 public class WeatherResponse {
-
     @JsonProperty("coord")
     private Coord coord;
     @JsonProperty("weather")

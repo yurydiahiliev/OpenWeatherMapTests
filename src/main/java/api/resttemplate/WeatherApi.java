@@ -68,7 +68,6 @@ public class WeatherApi extends BaseRestTemplateClient {
                 .queryParam("q", cityName);
 
         HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
-        System.out.println("!!!!" + entity.getHeaders());
 
         return restTemplate.exchange(
                 uriComponentsBuilder.toUriString(),

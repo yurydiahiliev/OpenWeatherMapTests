@@ -1,13 +1,10 @@
 package ui.core;
 
+import api.BaseApi;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
-import org.aeonbits.owner.ConfigFactory;
-import utils.OpenWeatherConfig;
 
-public class BasePage {
-
-    private static OpenWeatherConfig config = ConfigFactory.create(OpenWeatherConfig.class);
+public class BasePage extends BaseApi {
 
     public static <T> T open(Class<T> tClass) {
 
@@ -19,7 +16,7 @@ public class BasePage {
 
             T pageObject = tClass.newInstance();
 
-            open(config.baseUiUrl() + pageUrl.value());
+            open(openWeatherConfig.baseUiUrl() + pageUrl.value());
 
             return pageObject;
         } catch (Exception e) {

@@ -5,5 +5,5 @@ import utils.OpenWeatherConfig;
 
 public abstract class BaseApi {
 
-    protected OpenWeatherConfig openWeatherConfig = ConfigFactory.create(OpenWeatherConfig.class);
+    protected static OpenWeatherConfig openWeatherConfig = ConfigFactory.create(OpenWeatherConfig.class);
 }
