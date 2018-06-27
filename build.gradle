@@ -22,6 +22,7 @@ dependencies {
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.8"
     compile group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.0-BETA21'
     compile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.3'
+    compile group: 'io.rest-assured', name: 'json-schema-validator', version: '3.0.0'
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.9.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.9.RELEASE'
@@ -35,8 +36,18 @@ dependencies {
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.9.RELEASE'
 }
 
-test {
-    systemProperty('httpClient', project.hasProperty('httpClient') ? project.findProperty('httpClient') : 'restassured')
+task smokeTest(type: Test) {
+    def httpClient = System.getProperty('httpClient')
+
+    useTestNG() {
+        options.includeGroups 'smoke'
+
+        if (httpClient == 'resttemplate') {
+            suites 'src/test/resources/run_resttemplate_tests.xml'
+        } else {
+            suites 'src/test/resources/run_restassured_tests.xml'
+        }
+    }
 
     outputs.upToDateWhen { false }
     testLogging {

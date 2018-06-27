@@ -1,7 +1,8 @@
-package com.openweathermap.tests;
+package com.openweathermap.tests.resttemplate;
 
 import api.responseModels.WeatherResponse;
 import com.codeborne.selenide.Condition;
+import com.openweathermap.tests.BaseTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.testng.annotations.Test;
@@ -10,7 +11,7 @@ import ui.pages.SignInPage;
 import static org.assertj.core.api.Assertions.assertThat;
 import static ui.core.BasePage.open;
 
-public class CurrentWeatherTest extends BaseTest {
+public class CurrentWeatherRestTemplateTest extends BaseTest {
 
     @Test(groups = {SMOKE})
     public void testUserCanGetCurrentWeatherByCityName() {
@@ -32,7 +33,8 @@ public class CurrentWeatherTest extends BaseTest {
 
     @Test(groups = {SMOKE})
     public void testUserCanGetCurrentWeatherByCoordinates() {
-        ResponseEntity<WeatherResponse> weatherResponse = weatherApi.getWeatherByCoordinates(35, 139);        assertThat(weatherResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
+        ResponseEntity<WeatherResponse> weatherResponse = weatherApi.getWeatherByCoordinates(35, 139);
+        assertThat(weatherResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Test(groups = {SMOKE})

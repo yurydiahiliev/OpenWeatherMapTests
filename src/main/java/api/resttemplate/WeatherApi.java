@@ -22,10 +22,9 @@ public class WeatherApi extends BaseRestTemplateClient {
                 .queryParam("APPID", openWeatherConfig.app_id());
     }
 
-
-    public  ResponseEntity<WeatherResponse> getWeatherById(long id) {
+    public  ResponseEntity<WeatherResponse> getWeatherById(long cityId) {
         UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
-                .queryParam("id", id);
+                .queryParam("id", cityId);
 
         HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
 
@@ -37,7 +36,7 @@ public class WeatherApi extends BaseRestTemplateClient {
 
     }
 
-    public ResponseEntity<WeatherResponse> getWeatherByZipCode(String zipCode) {
+    public ResponseEntity<WeatherResponse> getWeatherByZipCode(final String zipCode) {
         UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
                 .queryParam("zip", zipCode);
 
@@ -50,7 +49,7 @@ public class WeatherApi extends BaseRestTemplateClient {
                 WeatherResponse.class);
     }
 
-    public ResponseEntity<WeatherResponse> getWeatherByCoordinates(double lat, double lon) {
+    public ResponseEntity<WeatherResponse> getWeatherByCoordinates(final double lat, final double lon) {
         UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
                 .queryParam("lat", lat)
                 .queryParam("lon", lon);
@@ -64,7 +63,7 @@ public class WeatherApi extends BaseRestTemplateClient {
                 WeatherResponse.class);
     }
 
-    public ResponseEntity<WeatherResponse> getWeatherByCityName(String cityName) {
+    public ResponseEntity<WeatherResponse> getWeatherByCityName(final String cityName) {
         UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
                 .queryParam("q", cityName);
 
