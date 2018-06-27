@@ -6,9 +6,12 @@ import com.openweathermap.tests.BaseTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.testng.annotations.Test;
+import ui.pages.NavigationFooter;
 import ui.pages.SignInPage;
+import ui.pages.WeatherPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static ui.core.BasePage.at;
 import static ui.core.BasePage.open;
 
 public class CurrentWeatherRestTemplateTest extends BaseTest {
@@ -23,6 +26,13 @@ public class CurrentWeatherRestTemplateTest extends BaseTest {
                 .getNotificationAlertElement()
                 .shouldHave(Condition.text("Signed in successfully."));
 
+       int humibity = at(NavigationFooter.class)
+                .openTab(WeatherPage.class, "Weather")
+                .searchCity("London")
+                .clickFirstLink()
+                .getHumidity();
+
+       assertThat(weatherResponse.getBody().getMain().getHumidity()).isEqualTo(humibity);
     }
 
     @Test(groups = {SMOKE})
