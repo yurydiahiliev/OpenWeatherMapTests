@@ -1,5 +1,6 @@
 package api.resttemplate;
 
+import api.responseModels.ForecastResponse;
 import api.responseModels.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -17,13 +18,18 @@ public class WeatherApi extends BaseRestTemplateClient {
     @Autowired
     private RestTemplate restTemplate;
 
-    private UriComponentsBuilder createUriWithAppId() {
+    private UriComponentsBuilder createUriWithAppIdForCurrentWeather() {
         return UriComponentsBuilder.fromHttpUrl(openWeatherConfig.currentWeatherUrl())
                 .queryParam("APPID", openWeatherConfig.app_id());
     }
 
+    private UriComponentsBuilder createUriWithAppIdForForecast() {
+        return UriComponentsBuilder.fromHttpUrl(openWeatherConfig.forecastUrl())
+                .queryParam("APPID", openWeatherConfig.app_id());
+    }
+
     public  ResponseEntity<WeatherResponse> getWeatherById(long cityId) {
-        UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
+        UriComponentsBuilder uriComponentsBuilder = createUriWithAppIdForCurrentWeather()
                 .queryParam("id", cityId);
 
         HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
@@ -37,7 +43,7 @@ public class WeatherApi extends BaseRestTemplateClient {
     }
 
     public ResponseEntity<WeatherResponse> getWeatherByZipCode(final String zipCode) {
-        UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
+        UriComponentsBuilder uriComponentsBuilder = createUriWithAppIdForCurrentWeather()
                 .queryParam("zip", zipCode);
 
         HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
@@ -50,7 +56,7 @@ public class WeatherApi extends BaseRestTemplateClient {
     }
 
     public ResponseEntity<WeatherResponse> getWeatherByCoordinates(final double lat, final double lon) {
-        UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
+        UriComponentsBuilder uriComponentsBuilder = createUriWithAppIdForCurrentWeather()
                 .queryParam("lat", lat)
                 .queryParam("lon", lon);
 
@@ -64,7 +70,7 @@ public class WeatherApi extends BaseRestTemplateClient {
     }
 
     public ResponseEntity<WeatherResponse> getWeatherByCityName(final String cityName) {
-        UriComponentsBuilder uriComponentsBuilder = createUriWithAppId()
+        UriComponentsBuilder uriComponentsBuilder = createUriWithAppIdForCurrentWeather()
                 .queryParam("q", cityName);
 
         HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
@@ -74,5 +80,59 @@ public class WeatherApi extends BaseRestTemplateClient {
                 HttpMethod.GET,
                 entity,
                 WeatherResponse.class);
+    }
+
+    public  ResponseEntity<ForecastResponse> getForecastById(long cityId) {
+        UriComponentsBuilder uriComponentsBuilder = createUriWithAppIdForForecast()
+                .queryParam("id", cityId);
+
+        HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
+
+        return restTemplate.exchange(
+                uriComponentsBuilder.toUriString(),
+                HttpMethod.GET,
+                entity,
+                ForecastResponse.class);
+
+    }
+
+    public ResponseEntity<ForecastResponse> getForecastByZipCode(final String zipCode) {
+        UriComponentsBuilder uriComponentsBuilder = createUriWithAppIdForForecast()
+                .queryParam("zip", zipCode);
+
+        HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
+
+        return restTemplate.exchange(
+                uriComponentsBuilder.toUriString(),
+                HttpMethod.GET,
+                entity,
+                ForecastResponse.class);
+    }
+
+    public ResponseEntity<ForecastResponse> getForecastByCoordinates(final double lat, final double lon) {
+        UriComponentsBuilder uriComponentsBuilder = createUriWithAppIdForForecast()
+                .queryParam("lat", lat)
+                .queryParam("lon", lon);
+
+        HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
+
+        return restTemplate.exchange(
+                uriComponentsBuilder.toUriString(),
+                HttpMethod.GET,
+                entity,
+                ForecastResponse.class);
+    }
+
+    public ResponseEntity<ForecastResponse> getForecastByCityName(final String cityName) {
+        UriComponentsBuilder uriComponentsBuilder = createUriWithAppIdForForecast()
+                .queryParam("q", cityName);
+
+        HttpEntity<?> entity = new HttpEntity<>(setHttpHeaders());
+
+        return restTemplate.exchange(
+                uriComponentsBuilder.toUriString(),
+                HttpMethod.GET,
+                entity,
+                ForecastResponse.class);
     }
 }

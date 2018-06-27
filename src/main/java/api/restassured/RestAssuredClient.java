@@ -45,4 +45,37 @@ public class RestAssuredClient extends BaseRestAssuredClient {
                 .get(openWeatherConfig.currentWeatherUrl())
                 .then();
     }
+
+    public ValidatableResponse getForecastByCityName(final String cityName) {
+        return requestSpecification
+                .when()
+                .queryParam("q", cityName)
+                .get(openWeatherConfig.forecastUrl())
+                .then();
+    }
+
+    public ValidatableResponse getForecastByCityId(final long cityId) {
+        return requestSpecification
+                .when()
+                .queryParam("id", cityId)
+                .get(openWeatherConfig.forecastUrl())
+                .then();
+    }
+
+    public ValidatableResponse getForecastByZipCode(final String zipCode) {
+        return requestSpecification
+                .when()
+                .queryParam("zip", zipCode)
+                .get(openWeatherConfig.forecastUrl())
+                .then();
+    }
+
+    public ValidatableResponse getForecastByCoordinates(final double lat, final double lon) {
+        return requestSpecification
+                .when()
+                .queryParam("lat", lat)
+                .queryParam("lon", lon)
+                .get(openWeatherConfig.forecastUrl())
+                .then();
+    }
 }
