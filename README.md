@@ -3,15 +3,10 @@
 This repository consists test automation framework for REST API and UI tests
 As a object of testing used service: https://openweathermap.org
 
-## Getting Started
-
-```
-$ git clone https://github.com/yurydiahiliev/OpenWeatherMapTests.git
-```
-
 ### Prerequisites
 
 - Installed Java 8
+- Installed Git
 - Installed Lombok plugin in Intellij IDEA for building project in IDEA
 
 ### Technologies
@@ -26,6 +21,13 @@ $ git clone https://github.com/yurydiahiliev/OpenWeatherMapTests.git
 - Spring Boot 1.5.9.RELEASE
 - Spring Web 4.3.8.RELEASE
 - Mockito 1.6.4
+- Yandex Allure 2.5
+
+### Getting Started
+Clone this repository via git command
+```
+$ git clone https://github.com/yurydiahiliev/OpenWeatherMapTests.git
+```
 
 ## Running the tests
 For running test suite use following commands with parameters:
@@ -60,32 +62,24 @@ There is a simple Intellij IDEA code coverage report
 
 ![alt text](https://i.imgur.com/cthU2n3.png)
 
-## Built With
+## Test Reporting
+In project used Yandex Allure reporting. All reports are available in project directory:
+```
+$ cd /OpenWeatherMapTests/build/reports/allure-report
+```
+For generating report use Gradle command.
+```
+$./gradlew allureReport
+```
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+![alt text](https://i.imgur.com/C7h1Rt1.png)
 
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Yurii Diahiliev** - *Initial work* -(https://github.com/yurydiahiliev)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+See also the list of [contributors](https://github.com/yurydiahiliev/OpenWeatherMapTests/contributors) who participated in this project.
