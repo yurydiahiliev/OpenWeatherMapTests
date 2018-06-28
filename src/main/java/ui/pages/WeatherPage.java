@@ -25,6 +25,7 @@ public class WeatherPage extends BasePage {
     private SelenideElement windParams = $("td#weather-widget-wind");
     private SelenideElement sunriseElement = $x("//td[text()='Sunrise']/../td[2]");
     private SelenideElement sunsetElement = $x("//td[text()='Sunset']/../td[2]");
+    private SelenideElement toC = $x("//span[@id='metric']");
 
     public SearchCityResultsPage searchCity(String city) {
         searchCityInput.setValue(city).pressEnter();
@@ -37,7 +38,7 @@ public class WeatherPage extends BasePage {
     }
 
     public WeatherResponse getActualWeatherResponse() {
-
+        toC.click();
         Coord coord = new Coord();
         coord.setLat(Double.parseDouble(latCoordinate.getText()));
         coord.setLon(Double.parseDouble(lonCoordinate.getText()));
