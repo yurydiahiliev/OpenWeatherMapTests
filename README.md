@@ -30,7 +30,7 @@ Clone this repository via git command
 $ git clone https://github.com/yurydiahiliev/OpenWeatherMapTests.git
 ```
 
-## Running the tests
+### Running the tests
 For running test suite use following commands with parameters:
 
 1. Next command runs smoke tests with default HTTP client parameter (restassured)
@@ -57,19 +57,19 @@ During running tests may possible to monitoring test execution process. All test
 ![alt text](https://i.imgur.com/Y4MzVYq.png)
 
 
-## Code coverage
+### Code coverage
 
 There is a simple Intellij IDEA code coverage report
 
 ![alt text](https://i.imgur.com/cthU2n3.png)
 
-## Static analysis tools
+### Static analysis tools
 
 As a static analysis tool used SonarLint. SonarLint is an IntelliJ IDEA plugin that provides on the fly feedback to developers on new bugs and quality issues injected into Java, JavaScript, PHP and Python code. SonarLint supports SonarSource code analyzers (SonarJava, SonarJS, SonarPHP and SonarPython) as well as custom rules that extend these code analyzers.
 
 ![alt text](https://i.imgur.com/BVGhTPz.png)
 
-## Test Reporting
+### Test Reporting
 In project used Yandex Allure reporting. All reports are available in project directory:
 ```
 $ cd /OpenWeatherMapTests/build/reports/allure-report
@@ -81,11 +81,7 @@ $./gradlew allureReport
 
 ![alt text](https://i.imgur.com/C7h1Rt1.png)
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Authors
+### Authors
 
 * **Yurii Diahiliev** - *Initial work* -(https://github.com/yurydiahiliev)
 
