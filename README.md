@@ -17,10 +17,12 @@ $ git clone https://github.com/yurydiahiliev/OpenWeatherMapTests.git
 ### Technologies
 
 - Java 8
+- Gradle 4.4.1
 - TestNG 6.10
 - Selenide 4.7
 - Rest-Assured 3.0.3
 - Jackson 2.8.8
+- Lombok 1.16.14
 - Spring Boot 1.5.9.RELEASE
 - Spring Web 4.3.8.RELEASE
 - Mockito 1.6.4
@@ -43,23 +45,19 @@ $./gradlew clean smokeTest -PhttpClient=resttemplate
 
 ### Test execution monitoring
 
-During running tests may possible to monitoring test execution process. All tests have been executed on cluster with following  services
+During running tests may possible to monitoring test execution process. All tests have been executed on cluster with following  services on remote Linux machine http://35.229.91.161:8082/#/
+* Docker
+* Selenoid
+* GGR
+* GGR-UI
 
-```
-Give an example
-```
+![alt text](https://i.imgur.com/Y4MzVYq.png)
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Code coverage
 
 There is a simple Intellij IDEA code coverage report
+
 ![alt text](https://i.imgur.com/cthU2n3.png)
 
 ## Built With
