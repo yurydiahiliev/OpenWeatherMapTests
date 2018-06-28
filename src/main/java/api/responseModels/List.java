@@ -24,7 +24,7 @@ public class List {
     @JsonProperty("dt")
     private Integer dt;
     @JsonProperty("main")
-    private Main main;
+    private MainForecast main;
     @JsonProperty("weather")
     private java.util.List<Weather> weather = null;
     @JsonProperty("clouds")
@@ -51,12 +51,12 @@ public class List {
     }
 
     @JsonProperty("main")
-    public Main getMain() {
+    public MainForecast getMain() {
         return main;
     }
 
     @JsonProperty("main")
-    public void setMain(Main main) {
+    public void setMain(MainForecast main) {
         this.main = main;
     }
 

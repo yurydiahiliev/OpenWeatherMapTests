@@ -1,5 +1,6 @@
 package com.openweathermap.tests.unit;
 
+import api.responseModels.ForecastResponse;
 import api.responseModels.WeatherResponse;
 import com.codeborne.selenide.Condition;
 import com.openweathermap.tests.BaseTest;
@@ -40,7 +41,7 @@ public class OpenWeatherUnitTest extends BaseTest {
     }
 
     @Test
-    public void testRestAssuredClient1() {
+    public void testRestAssuredClientGetWeatherByCityNameMethod() {
         ValidatableResponse validatableResponse = restAssuredClient.getWeatherByCityName("New York");
         WeatherResponse weatherResponse = validatableResponse
                 .extract()
@@ -82,7 +83,7 @@ public class OpenWeatherUnitTest extends BaseTest {
     }
 
     @Test
-    public void testRestAssuredClient2() {
+    public void testRestAssuredClientGetWeatherByCoordinatesMethod() {
         ValidatableResponse validatableResponse = restAssuredClient.getWeatherByCoordinates(39, 135);
         WeatherResponse weatherResponse = validatableResponse
                 .extract()
@@ -91,7 +92,7 @@ public class OpenWeatherUnitTest extends BaseTest {
     }
 
     @Test
-    public void testRestAssuredClient3() {
+    public void testRestAssuredClientGetWeatherByZipCodeMethod() {
         ValidatableResponse validatableResponse = restAssuredClient.getWeatherByZipCode("94040");
         WeatherResponse weatherResponse = validatableResponse
                 .extract()
@@ -101,7 +102,7 @@ public class OpenWeatherUnitTest extends BaseTest {
     }
 
     @Test
-    public void testRestAssuredClient4() {
+    public void testRestAssuredClientGetWeatherByCityIdMethod() {
         ValidatableResponse validatableResponse = restAssuredClient.getWeatherByCityId(2172797);
         WeatherResponse weatherResponse = validatableResponse
                 .extract()
@@ -110,27 +111,107 @@ public class OpenWeatherUnitTest extends BaseTest {
     }
 
     @Test
-    public void testRestTemplateClient1() {
+    public void testRestAssuredClientGetForecastByCityNameMethod() {
+        ValidatableResponse validatableResponse = restAssuredClient.getForecastByCityName("New York");
+        ForecastResponse forecastResponse = validatableResponse
+                .extract()
+                .as(ForecastResponse.class);
+        assertThat(forecastResponse).isNotNull();
+        assertThat(forecastResponse.getCod()).isEqualTo("200");
+        assertThat(forecastResponse.getCity().getName()).isEqualTo("New York");
+        assertThat(forecastResponse.getCity().getCountry()).isEqualTo("US");
+        assertThat(forecastResponse.getMessage()).isNotNull();
+        assertThat(forecastResponse.getCnt()).isNotNull();
+
+        assertThat(forecastResponse.getList().get(0).getDt()).isNotNull();
+        assertThat(forecastResponse.getList().get(0).getDtTxt()).isNotNull();
+        assertThat(forecastResponse.getList().get(0).getMain().getHumidity()).isNotNull();
+        assertThat(forecastResponse.getList().get(0).getMain().getTemp()).isNotNull();
+        assertThat(forecastResponse.getList().get(0).getMain().getTempMax()).isNotNull();
+        assertThat(forecastResponse.getList().get(0).getMain().getTempMin()).isNotNull();
+        assertThat(forecastResponse.getList().get(0).getMain().getPressure()).isNotNull();
+        assertThat(forecastResponse.getList().get(0).getMain().getGrndLevel()).isNotNull();
+        assertThat(forecastResponse.getList().get(0).getMain().getSeaLevel()).isNotNull();
+        assertThat(forecastResponse.getList().get(0).getMain().getTempKf()).isNotNull();
+
+        assertThat(forecastResponse.getList().get(0).getClouds().getAll()).isNotNull();
+        assertThat(forecastResponse.getList().get(0).getWind().getSpeed()).isNotNull();
+        assertThat(forecastResponse.getList().get(0).getWind().getDeg()).isNotNull();
+    }
+
+    @Test
+    public void testRestAssuredClientGetForecastByCoordinatesMethod() {
+        ValidatableResponse validatableResponse = restAssuredClient.getForecastByCoordinates(39, 135);
+        ForecastResponse forecastResponse = validatableResponse
+                .extract()
+                .as(ForecastResponse.class);
+        assertThat(forecastResponse).isNotNull();
+    }
+
+    @Test
+    public void testRestAssuredClientGetForecastByZipCodeMethod() {
+        ValidatableResponse validatableResponse = restAssuredClient.getForecastByZipCode("94040");
+        ForecastResponse forecastResponse = validatableResponse
+                .extract()
+                .as(ForecastResponse.class);
+        assertThat(forecastResponse).isNotNull();
+    }
+
+    @Test
+    public void testRestAssuredClientGetForecastByCityIdMethod() {
+        ValidatableResponse validatableResponse = restAssuredClient.getForecastByCityId(2172797);
+        ForecastResponse forecastResponse = validatableResponse
+                .extract()
+                .as(ForecastResponse.class);
+        assertThat(forecastResponse).isNotNull();
+    }
+
+    @Test
+    public void testRestTemplateClientGetWeatherByCityNameMethod() {
         WeatherResponse weatherResponse = weatherApi.getWeatherByCityName("London").getBody();
         assertThat(weatherResponse).isNotNull();
     }
 
     @Test
-    public void testRestTemplateClient2() {
+    public void testRestTemplateClientGetWeatherByZipCodeMethod() {
         WeatherResponse weatherResponse = weatherApi.getWeatherByZipCode("94040").getBody();
         assertThat(weatherResponse).isNotNull();
     }
 
     @Test
-    public void testRestTemplateClient3() {
+    public void testRestTemplateClientGetWeatherByCoordinatesMethod() {
         WeatherResponse weatherResponse = weatherApi.getWeatherByCoordinates(39, 135).getBody();
         assertThat(weatherResponse).isNotNull();
     }
 
     @Test
-    public void testRestTemplateClient4() {
+    public void testRestTemplateClientGetWeatherByCityIdMethod() {
         WeatherResponse weatherResponse = weatherApi.getWeatherById(2172797).getBody();
         assertThat(weatherResponse).isNotNull();
+    }
+
+    @Test
+    public void testRestTemplateClientGetForecastByCityNameMethod() {
+        ForecastResponse forecastResponse = weatherApi.getForecastByCityName("London").getBody();
+        assertThat(forecastResponse).isNotNull();
+    }
+
+    @Test
+    public void testRestTemplateClientGetForecastByZipCodeMethod() {
+        ForecastResponse forecastResponse = weatherApi.getForecastByZipCode("94040").getBody();
+        assertThat(forecastResponse).isNotNull();
+    }
+
+    @Test
+    public void testRestTemplateClientGetForecastByCoordinatesMethod() {
+        ForecastResponse forecastResponse = weatherApi.getForecastByCoordinates(39, 135).getBody();
+        assertThat(forecastResponse).isNotNull();
+    }
+
+    @Test
+    public void testRestTemplateClientGetForecastByCityIdMethod() {
+        ForecastResponse forecastResponse = weatherApi.getForecastById(2172797).getBody();
+        assertThat(forecastResponse).isNotNull();
     }
 
     @Test(expectedExceptions = RuntimeException.class)
