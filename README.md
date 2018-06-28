@@ -10,10 +10,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-```
-Give examples
-```
-
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
@@ -33,8 +29,20 @@ until finished
 End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
+For running test suite use following commands with parameters:
 
-Explain how to run the automated tests for this system
+1. Next command runs smoke tests with default HTTP client parameter (restassured)
+```
+$./gradlew clean smokeTest
+```
+or
+```
+$./gradlew clean smokeTest -PhttpClient=restassured
+```
+2. Also it is possible to indicate type of HTTP client as a system property
+```
+$./gradlew clean smokeTest -PhttpClient=resttemplate
+```
 
 ### Break down into end to end tests
 
