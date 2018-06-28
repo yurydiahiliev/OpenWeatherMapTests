@@ -1,7 +1,6 @@
 # OpenWeatherMapTests
-# Project Title
 
-One Paragraph of project description goes here
+This repository consists test automation framework for REST API and UI tests
 
 ## Getting Started
 
