@@ -19,7 +19,7 @@ public class CurrentWeatherRestTemplateTest extends LoginRequiredTest {
 
     private WeatherResponse actualWeatherResponse;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void createActualWeatherResponse() {
         open(MainPage.class);
         actualWeatherResponse = at(NavigationFooter.class)
