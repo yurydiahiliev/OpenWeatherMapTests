@@ -4,29 +4,24 @@ This repository consists test automation framework for REST API and UI tests
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+```
+$ git clone https://github.com/yurydiahiliev/OpenWeatherMapTests.git
+```
 
 ### Prerequisites
 
 What things you need to install the software and how to install them
 
-### Installing
+### Technologies
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+- Java 8
+- TestNG 6.10
+- Selenide 4.7
+- Rest-Assured 3.0.3
+- Jackson 2.8.8
+- Spring Boot 1.5.9.RELEASE
+- Spring Web 4.3.8.RELEASE
+- Mockito 1.6.4
 
 ## Running the tests
 For running test suite use following commands with parameters:
@@ -44,9 +39,9 @@ $./gradlew clean smokeTest -PhttpClient=restassured
 $./gradlew clean smokeTest -PhttpClient=resttemplate
 ```
 
-### Break down into end to end tests
+### Test execution monitoring
 
-Explain what these tests test and why
+During running tests may possible to monitoring test execution process. All tests have been executed on cluster with following  services
 
 ```
 Give an example
