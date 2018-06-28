@@ -1,6 +1,7 @@
 # OpenWeatherMapTests
 
 This repository consists test automation framework for REST API and UI tests
+As a object of testing used service: https://openweathermap.org
 
 ## Getting Started
 
@@ -10,7 +11,8 @@ $ git clone https://github.com/yurydiahiliev/OpenWeatherMapTests.git
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+- Installed Java 8
+- Installed Lombok plugin in Intellij IDEA for building project in IDEA
 
 ### Technologies
 
@@ -55,9 +57,10 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Deployment
+## Code coverage
 
-Add additional notes about how to deploy this on a live system
+There is a simple Intellij IDEA code coverage report
+![alt text](https://imgur.com/a/ULNQ5ks)
 
 ## Built With
 
