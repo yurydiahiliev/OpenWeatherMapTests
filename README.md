@@ -63,6 +63,12 @@ There is a simple Intellij IDEA code coverage report
 
 ![alt text](https://i.imgur.com/cthU2n3.png)
 
+## Static analysis tools
+
+As a static analysis tool used SonarLint. SonarLint is an IntelliJ IDEA plugin that provides on the fly feedback to developers on new bugs and quality issues injected into Java, JavaScript, PHP and Python code. SonarLint supports SonarSource code analyzers (SonarJava, SonarJS, SonarPHP and SonarPython) as well as custom rules that extend these code analyzers.
+
+![alt text](https://i.imgur.com/BVGhTPz.png)
+
 ## Test Reporting
 In project used Yandex Allure reporting. All reports are available in project directory:
 ```
