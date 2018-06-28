@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 @PageUrl("/")
 public class MainPage extends BasePage {
 
-    private SelenideElement notificationAlertElement = $("div.panel-body");
+    public SelenideElement notificationAlertElement = $("div.panel-body");
 
     public SelenideElement getNotificationAlertElement() {
         return notificationAlertElement;

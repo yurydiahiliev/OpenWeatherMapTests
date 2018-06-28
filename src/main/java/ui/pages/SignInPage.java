@@ -16,6 +16,7 @@ public class SignInPage extends BasePage {
     private SelenideElement emailInput = $(By.id("user_email"));
     private SelenideElement passwordInput = $(By.id("user_password"));
     private SelenideElement submitBtn = $x("//input[@value='Submit']");
+    public MainPage toMainPage = new MainPage();
 
     public MainPage signInAsUser(User user) {
         emailInput.setValue(user.getEmail());
