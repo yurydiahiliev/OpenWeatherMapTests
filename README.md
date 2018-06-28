@@ -1,6 +1,7 @@
 # OpenWeatherMapTests
 
 This repository consists test automation framework for REST API and UI tests
+
 As a object of testing used service: https://openweathermap.org
 
 ### Prerequisites
@@ -67,7 +68,7 @@ In project used Yandex Allure reporting. All reports are available in project di
 ```
 $ cd /OpenWeatherMapTests/build/reports/allure-report
 ```
-For generating report use Gradle command.
+For generating report use Gradle task.
 ```
 $./gradlew allureReport
 ```
