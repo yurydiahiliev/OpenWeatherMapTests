@@ -1,6 +1,6 @@
 package api.resttemplate;
 
-import api.BaseApi;
+import api.BaseApiConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @ComponentScan("api.resttemplate")
-public class BaseRestTemplateClient extends BaseApi {
+public class BaseRestTemplateClient extends BaseApiConfig {
 
     @Bean
     public RestTemplate restTemplate() {
@@ -23,7 +23,7 @@ public class BaseRestTemplateClient extends BaseApi {
         return restTemplate;
     }
 
-    public HttpHeaders setHttpHeaders() {
+    protected HttpHeaders setHttpHeaders() {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         return httpHeaders;

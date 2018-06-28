@@ -1,10 +1,10 @@
 package ui.core;
 
-import api.BaseApi;
+import api.BaseApiConfig;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
 
-public class BasePage extends BaseApi {
+public class BasePage extends BaseApiConfig {
 
     public static <T> T open(Class<T> tClass) {
 

@@ -1,6 +1,6 @@
 package api.restassured;
 
-import api.BaseApi;
+import api.BaseApiConfig;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,7 +21,7 @@ import static io.restassured.config.ObjectMapperConfig.objectMapperConfig;
 
 @Configuration
 @ComponentScan("api.restassured")
-public class BaseRestAssuredClient extends BaseApi {
+public class BaseRestAssuredClient extends BaseApiConfig {
 
     private ObjectMapper getObjectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
