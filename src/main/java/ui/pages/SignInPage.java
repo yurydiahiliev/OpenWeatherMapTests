@@ -1,6 +1,5 @@
 package ui.pages;
 
-
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import ui.core.BasePage;
@@ -23,6 +22,5 @@ public class SignInPage extends BasePage {
         passwordInput.setValue(user.getPassword());
         submitBtn.click();
         return new MainPage();
-
     }
 }

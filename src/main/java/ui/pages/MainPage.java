@@ -14,6 +14,4 @@ public class MainPage extends BasePage {
     public SelenideElement getNotificationAlertElement() {
         return notificationAlertElement;
     }
-
-
 }
