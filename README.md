@@ -60,7 +60,7 @@ Give an example
 ## Code coverage
 
 There is a simple Intellij IDEA code coverage report
-![alt text](https://imgur.com/a/ULNQ5ks)
+![alt text](https://i.imgur.com/cthU2n3.png)
 
 ## Built With
 
