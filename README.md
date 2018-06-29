@@ -23,6 +23,7 @@ As a object of testing used service: https://openweathermap.org
 - Spring Web 4.3.8.RELEASE
 - Mockito 1.6.4
 - Yandex Allure 2.5
+- Cucumber-jvm, cucumber-spring, cucumber-testng: 1.2.5
 
 ### Getting Started
 Clone this repository via git command
@@ -90,6 +91,10 @@ $./gradlew allureReport
 ```
 
 ![alt text](https://i.imgur.com/vxWoDEo.png)
+
+Folder /target/cucumber presents small Cucumber feature report
+
+![alt text](https://i.imgur.com/6Q9yeH6.png)
 
 ### Authors
 
