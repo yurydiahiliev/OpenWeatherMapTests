@@ -79,7 +79,7 @@ For generating report use Gradle task.
 $./gradlew allureReport
 ```
 
-![alt text](https://i.imgur.com/C7h1Rt1.png)
+![alt text](https://i.imgur.com/vxWoDEo.png)
 
 ### Authors
 
