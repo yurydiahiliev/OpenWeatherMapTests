@@ -23,7 +23,7 @@ import utils.UserConfig;
 @ContextConfiguration(classes = {BaseRestTemplateClient.class, BaseRestAssuredClient.class})
 public class BaseTest extends AbstractTestNGSpringContextTests {
 
-    protected static UserConfig userConfig = ConfigFactory.create(UserConfig.class);
+    private static UserConfig userConfig = ConfigFactory.create(UserConfig.class);
 
     protected static final String SMOKE = "smoke";
     protected static final String REGRESSION = "regression";
