@@ -1,6 +1,7 @@
 package ui.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import ui.core.BasePage;
 import ui.core.PageUrl;
@@ -17,6 +18,7 @@ public class SignInPage extends BasePage {
     private SelenideElement submitBtn = $x("//input[@value='Submit']");
     public MainPage toMainPage = new MainPage();
 
+    @Step
     public MainPage signInAsUser(User user) {
         emailInput.setValue(user.getEmail());
         passwordInput.setValue(user.getPassword());
