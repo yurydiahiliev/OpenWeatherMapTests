@@ -34,7 +34,7 @@ public class CucumberSteps extends BaseRestAssuredClient {
         response.assertThat().statusCode(expectedStatusCode);
     }
 
-    @And("^the client receives weather in country (.+)$")
+    @And("^the user receives weather in country (.+)$")
     public void the_client_receives_weather_in_country_Great_Britain(String country) {
         WeatherResponse weatherResponse = response
                 .extract()
