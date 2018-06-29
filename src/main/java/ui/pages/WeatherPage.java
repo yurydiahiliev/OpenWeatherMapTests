@@ -4,7 +4,6 @@ import api.responseModels.Coord;
 import api.responseModels.Main;
 import api.responseModels.Weather;
 import api.responseModels.WeatherResponse;
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import ui.core.BasePage;
@@ -23,21 +22,12 @@ public class WeatherPage extends BasePage {
     private SelenideElement latCoordinate = $("span#wrong-data-lat");
     private SelenideElement lonCoordinate = $("span#wrong-data-lon");
     private SelenideElement weatherDescription = $("p.weather-widget__main");
-    private SelenideElement windParams = $("td#weather-widget-wind");
-    private SelenideElement sunriseElement = $x("//td[text()='Sunrise']/../td[2]");
-    private SelenideElement sunsetElement = $x("//td[text()='Sunset']/../td[2]");
     private SelenideElement toC = $x("//span[@id='metric']");
 
     @Step
     public SearchCityResultsPage searchCity(String city) {
         searchCityInput.setValue(city).pressEnter();
         return new SearchCityResultsPage();
-    }
-
-    @Step
-    public Double getWindSpeed() {
-        String[] windParameters = windParams.shouldBe(Condition.visible).getText().split(",");
-        return Double.parseDouble(windParameters[2]);
     }
 
     @Step
