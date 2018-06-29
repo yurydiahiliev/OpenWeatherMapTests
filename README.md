@@ -23,6 +23,7 @@ As a object of testing used service: https://openweathermap.org
 - Spring Web 4.3.8.RELEASE
 - Mockito 1.6.4
 - Yandex Allure 2.5
+- Cucumber-jvm, cucumber-spring, cucumber-testng: 1.2.5
 
 ### Getting Started
 Clone this repository via git command
@@ -45,7 +46,17 @@ $./gradlew clean smokeTest -PhttpClient=restassured
 ```
 $./gradlew clean smokeTest -PhttpClient=resttemplate
 ```
+3. If you want to run test with cucumber integration, please use following command:
 
+```
+$./gradlew clean test 
+```
+There are main entities with cucumber integration: 
+```
+/api/stepDefinitions/CucumberSteps.java
+/tests/CucumberTest.java
+/src/test/resources/features/current_weather_by_name.feature
+```
 ### Test execution monitoring
 
 During running tests may possible to monitoring test execution process. All tests have been executed on cluster with following  services on remote Linux machine http://35.229.91.161:8082/#/
@@ -80,6 +91,10 @@ $./gradlew allureReport
 ```
 
 ![alt text](https://i.imgur.com/vxWoDEo.png)
+
+Folder /target/cucumber presents small Cucumber feature report
+
+![alt text](https://i.imgur.com/6Q9yeH6.png)
 
 ### Authors
 
