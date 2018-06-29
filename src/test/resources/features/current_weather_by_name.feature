@@ -1,3 +1,4 @@
+@smokeTest
 Feature: current weather by city name
   Scenario: user makes call to GET request by city name
     When the user calls current weather by London
