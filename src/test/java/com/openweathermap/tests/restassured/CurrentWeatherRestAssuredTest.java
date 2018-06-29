@@ -38,8 +38,8 @@ public class CurrentWeatherRestAssuredTest extends LoginRequiredTest {
         assertThat(expectedWeatherResponse.getBase()).isEqualTo(actualWeatherResponse.getBase());
     }
 
-    @Feature(value = "Current weather")
-    @Story(value = "Getting current weather by city name")
+    @Feature("Current weather")
+    @Story("Getting current weather by city name")
     @Test(groups = {SMOKE})
     public void testUserCanGetCurrentWeatherByCityName() {
         WeatherResponse weatherResponse = restAssuredClient.getWeatherByCityName("London")
@@ -53,8 +53,8 @@ public class CurrentWeatherRestAssuredTest extends LoginRequiredTest {
         checkAvailableParameters(weatherResponse);
     }
 
-    @Feature(value = "Current weather")
-    @Story(value = "Getting current weather by city id")
+    @Feature("Current weather")
+    @Story("Getting current weather by city id")
     @Test(groups = {SMOKE})
     public void testUserCanGetCurrentWeatherByCityId() {
         WeatherResponse weatherResponse = restAssuredClient.getWeatherByCityId(2643743)
@@ -68,8 +68,8 @@ public class CurrentWeatherRestAssuredTest extends LoginRequiredTest {
         checkAvailableParameters(weatherResponse);
     }
 
-    @Feature(value = "Current weather")
-    @Story(value = "Getting current weather by geographical coordinates")
+    @Feature("Current weather")
+    @Story("Getting current weather by geographical coordinates")
     @Test(groups = {SMOKE})
     public void testUserCanGetCurrentWeatherByCoordinates() {
         WeatherResponse weatherResponse = restAssuredClient.getWeatherByCoordinates(51.51, -0.13)
@@ -83,8 +83,8 @@ public class CurrentWeatherRestAssuredTest extends LoginRequiredTest {
         checkAvailableParameters(weatherResponse);
     }
 
-    @Feature(value = "Current weather")
-    @Story(value = "Getting current weather by zip code")
+    @Feature("Current weather")
+    @Story("Getting current weather by zip code")
     @Test(groups = {SMOKE})
     public void testUserCanGetCurrentWeatherByZipCode() {
         WeatherResponse weatherResponse = restAssuredClient.getWeatherByZipCode("WC2N,gb")
@@ -98,8 +98,8 @@ public class CurrentWeatherRestAssuredTest extends LoginRequiredTest {
         checkAvailableParameters(weatherResponse);
     }
 
-    @Feature(value = "Forecast weather")
-    @Story(value = "Getting forecast by city name")
+    @Feature("Forecast weather")
+    @Story("Getting forecast by city name")
     @Test(groups = {SMOKE})
     public void testUserCanGetForecastByCityName() {
         ForecastResponse weatherResponse = restAssuredClient.getForecastByCityName("London")
@@ -111,8 +111,8 @@ public class CurrentWeatherRestAssuredTest extends LoginRequiredTest {
         assertThat(weatherResponse).isNotNull();
     }
 
-    @Feature(value = "Forecast weather")
-    @Story(value = "Getting forecast weather by city id")
+    @Feature("Forecast weather")
+    @Story("Getting forecast weather by city id")
     @Test(groups = {SMOKE})
     public void testUserCanGetForecastByCityId() {
         ForecastResponse weatherResponse = restAssuredClient.getForecastByCityId(2643743)
@@ -124,8 +124,8 @@ public class CurrentWeatherRestAssuredTest extends LoginRequiredTest {
         assertThat(weatherResponse).isNotNull();
     }
 
-    @Feature(value = "Forecast weather")
-    @Story(value = "Getting forecast weather by geographical coordinates")
+    @Feature("Forecast weather")
+    @Story("Getting forecast weather by geographical coordinates")
     @Test(groups = {SMOKE})
     public void testUserCanGetForecastByCoordinates() {
         ForecastResponse weatherResponse = restAssuredClient.getForecastByCoordinates(51.51, -0.13)
@@ -137,8 +137,8 @@ public class CurrentWeatherRestAssuredTest extends LoginRequiredTest {
         assertThat(weatherResponse).isNotNull();
     }
 
-    @Feature(value = "Forecast weather")
-    @Story(value = "Getting forecast weather by zip code")
+    @Feature("Forecast weather")
+    @Story("Getting forecast weather by zip code")
     @Test(groups = {SMOKE})
     public void testUserCanGetForecastByZipCode() {
         ForecastResponse weatherResponse = restAssuredClient.getForecastByZipCode("WC2N,gb")
