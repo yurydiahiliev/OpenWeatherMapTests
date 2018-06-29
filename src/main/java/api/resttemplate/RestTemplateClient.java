@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 @Configurable
-public class WeatherApi extends BaseRestTemplateClient {
+public class RestTemplateClient extends BaseRestTemplateClient {
 
     @Autowired
     private RestTemplate restTemplate;
@@ -28,7 +28,7 @@ public class WeatherApi extends BaseRestTemplateClient {
                 .queryParam("APPID", openWeatherConfig.app_id());
     }
 
-    public  ResponseEntity<WeatherResponse> getWeatherById(long cityId) {
+    public ResponseEntity<WeatherResponse> getWeatherById(long cityId) {
         UriComponentsBuilder uriComponentsBuilder = createUriWithAppIdForCurrentWeather()
                 .queryParam("id", cityId);
 
@@ -39,7 +39,6 @@ public class WeatherApi extends BaseRestTemplateClient {
                 HttpMethod.GET,
                 entity,
                 WeatherResponse.class);
-
     }
 
     public ResponseEntity<WeatherResponse> getWeatherByZipCode(final String zipCode) {

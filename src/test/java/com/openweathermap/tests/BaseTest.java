@@ -3,7 +3,7 @@ package com.openweathermap.tests;
 import api.restassured.BaseRestAssuredClient;
 import api.restassured.RestAssuredClient;
 import api.resttemplate.BaseRestTemplateClient;
-import api.resttemplate.WeatherApi;
+import api.resttemplate.RestTemplateClient;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.restassured.RestAssured;
@@ -27,17 +27,15 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     protected static User user = new User("yu.dyagilev@gmail.com", "123456qaz");
 
     @Autowired
-    protected WeatherApi weatherApi;
+    protected RestTemplateClient weatherApi;
 
     @Autowired
     protected RestAssuredClient restAssuredClient;
 
-    private AnnotationConfigApplicationContext applicationContext;
-
     @BeforeSuite(alwaysRun = true)
     public void setUp() {
         OpenWeatherConfig openWeatherConfig = ConfigFactory.create(OpenWeatherConfig.class);
-        applicationContext = new AnnotationConfigApplicationContext(BaseRestTemplateClient.class, BaseRestAssuredClient.class);
+        new AnnotationConfigApplicationContext(BaseRestTemplateClient.class, BaseRestAssuredClient.class);
         Configuration.baseUrl = openWeatherConfig.baseUiUrl();
         Configuration.timeout = openWeatherConfig.timeout();
         Configuration.browser = openWeatherConfig.browser();

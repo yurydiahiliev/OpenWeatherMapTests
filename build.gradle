@@ -10,6 +10,7 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -29,6 +30,13 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-context', version: '4.3.8.RELEASE'
     compile group: 'org.springframework', name: 'spring-web', version: '4.3.8.RELEASE'
     compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
+
+    compile ("info.cukes:cucumber-jvm:1.2.5",
+            "info.cukes:cucumber-core:1.2.5",
+            "info.cukes:cucumber-testng:1.2.5",
+            "info.cukes:cucumber-spring:1.2.5",
+            'commons-io:commons-io:2.4')
+
 
     testCompile 'org.assertj:assertj-core:3.6.2'
     testCompile group: 'org.powermock', name: 'powermock-mockito-release-full', version: '1.6.4', ext: 'pom'
@@ -57,6 +65,11 @@ task smokeTest(type: Test) {
     }
     systemProperty 'allure.results.directory', 'build/allure-results'
     ignoreFailures true
+}
+
+test {
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
 }
 
 allure {

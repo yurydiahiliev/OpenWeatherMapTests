@@ -73,7 +73,6 @@ public class OpenWeatherUnitTest extends BaseTest {
         assertThat(weatherResponse.getWeather().get(0).getId()).isNotNull();
         assertThat(weatherResponse.getWeather().get(0).getMain()).isNotNull();
 
-        assertThat(weatherResponse.getWind().getDeg()).isNotNull();
         assertThat(weatherResponse.getWind().getSpeed()).isNotNull();
 
         assertThat(weatherResponse.getCoord().getLat()).isNotNull();
