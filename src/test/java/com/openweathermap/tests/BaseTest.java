@@ -18,13 +18,16 @@ import org.testng.annotations.BeforeSuite;
 import ui.models.User;
 import ui.utils.AllureSelenide;
 import utils.OpenWeatherConfig;
+import utils.UserConfig;
 
 @ContextConfiguration(classes = {BaseRestTemplateClient.class, BaseRestAssuredClient.class})
 public class BaseTest extends AbstractTestNGSpringContextTests {
 
+    protected static UserConfig userConfig = ConfigFactory.create(UserConfig.class);
+
     protected static final String SMOKE = "smoke";
     protected static final String REGRESSION = "regression";
-    protected static User user = new User("yu.dyagilev@gmail.com", "123456qaz");
+    protected static User user = new User(userConfig.email(), userConfig.password());
 
     @Autowired
     protected RestTemplateClient weatherApi;
