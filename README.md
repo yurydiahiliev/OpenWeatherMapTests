@@ -46,10 +46,10 @@ $./gradlew clean smokeTest -PhttpClient=restassured
 ```
 $./gradlew clean smokeTest -PhttpClient=resttemplate
 ```
-3. If you want to run test with cucumber integration, please use following command:
+3. If you want to run test with cucumber integration, execute Gradle task:
 
 ```
-$./gradlew clean test 
+$./gradlew clean cucumber 
 ```
 There are main entities with cucumber integration: 
 ```
