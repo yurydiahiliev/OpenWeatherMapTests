@@ -84,20 +84,6 @@ task smokeTest(type: Test) {
     ignoreFailures true
 }
 
-test {
-    testLogging.showStandardStreams = true
-    systemProperties System.getProperties()
-
-    outputs.upToDateWhen { false }
-    testLogging {
-        showStandardStreams = true
-        events "passed", "skipped", "failed"
-        exceptionFormat = 'full'
-    }
-    systemProperty 'allure.results.directory', 'build/allure-results'
-    ignoreFailures true
-}
-
 allure {
     autoconfigure = true
     version = '2.4.1'
