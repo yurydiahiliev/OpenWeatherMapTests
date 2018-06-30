@@ -7,11 +7,9 @@ import com.openweathermap.tests.BaseTest;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.aeonbits.owner.ConfigFactory;
-import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ui.core.PageUrl;
@@ -22,10 +20,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static ui.core.BasePage.at;
 import static ui.core.BasePage.open;
 
-@RunWith(MockitoJUnitRunner.class)
 public class OpenWeatherUnitTest extends BaseTest {
 
-    @BeforeMethod
+    @BeforeClass(alwaysRun = true)
     public void initMocks(){
         MockitoAnnotations.initMocks(this);
     }

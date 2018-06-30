@@ -44,6 +44,23 @@ dependencies {
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.9.RELEASE'
 }
 
+configurations {
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'api/stepDefinitions', 'src/test/resources/features']
+        }
+    }
+}
+
 task smokeTest(type: Test) {
     def httpClient = System.getProperty('httpClient')
 
@@ -70,6 +87,15 @@ task smokeTest(type: Test) {
 test {
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
+
+    outputs.upToDateWhen { false }
+    testLogging {
+        showStandardStreams = true
+        events "passed", "skipped", "failed"
+        exceptionFormat = 'full'
+    }
+    systemProperty 'allure.results.directory', 'build/allure-results'
+    ignoreFailures true
 }
 
 allure {
