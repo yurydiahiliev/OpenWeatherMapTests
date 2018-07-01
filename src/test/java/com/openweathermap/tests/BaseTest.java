@@ -26,6 +26,7 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     protected static final String SMOKE = "smoke";
     protected static final String REGRESSION = "regression";
     protected static User user = Users.ADMIN;
+    protected OpenWeatherConfig openWeatherConfig = ConfigFactory.create(OpenWeatherConfig.class);
 
     @Autowired
     protected RestTemplateClient weatherApi;
@@ -35,7 +36,6 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
 
     @BeforeSuite(alwaysRun = true)
     public void setUp() {
-        OpenWeatherConfig openWeatherConfig = ConfigFactory.create(OpenWeatherConfig.class);
         new AnnotationConfigApplicationContext(BaseRestTemplateClient.class, BaseRestAssuredClient.class);
         Configuration.baseUrl = openWeatherConfig.baseUiUrl();
         Configuration.timeout = openWeatherConfig.timeout();

@@ -39,6 +39,7 @@ dependencies {
 
 
     testCompile 'org.assertj:assertj-core:3.6.2'
+    testCompile group: 'io.rest-assured', name: 'spring-mock-mvc', version: '3.0.0'
     testCompile group: 'org.powermock', name: 'powermock-mockito-release-full', version: '1.6.4', ext: 'pom'
     testCompile group: 'org.testng', name: 'testng', version: '6.10'
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.9.RELEASE'
